@@ -1,6 +1,8 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import simplejson
 import urllib
+import csv
 
 GEOCODE_BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
 API_KEY = 'AIzaSyBp3nFBX2qisgdWugfFwvqD_i4MHzR2t24'
@@ -21,5 +23,10 @@ def geocode(address, **geo_args):
     dict['locate'] = address
     print simplejson.dumps(dict, indent=2)
 
-if __name__ == '__main__':
-    geocode(address="内蒙古锡林浩特查干诺尔")
+#if __name__ == '__main__':
+#    geocode(address="内蒙古锡林浩特查干诺尔")
+
+with open('locate.csv',  'rb') as csvfile:
+    for line in csv.reader(csvfile,  skipinitialspace=True):
+        if __name__  ==  '__main__':
+            geocode(address=line[0])
